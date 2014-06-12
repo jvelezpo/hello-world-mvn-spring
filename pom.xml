@@ -9,6 +9,11 @@
 	<name>HelloWorldSpring Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<spring.version>4.0.5.RELEASE</spring.version>
+		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
+	</properties>
+	
 	<build>
 		<finalName>HelloWorldSpring</finalName>
 		<plugins>
@@ -43,10 +48,7 @@
 			<url>http://maven.springframework.org/milestone</url>
 		</repository>
 	</repositories>
-	<properties>
-		<spring.version>3.2.2.RELEASE</spring.version>
-		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
-	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -130,6 +132,13 @@
 			<artifactId>log4j</artifactId>
 			<scope>compile</scope>
 			<version>1.2.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

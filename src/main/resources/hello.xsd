@@ -13,6 +13,7 @@
 		<complexType>
 			<sequence>
 				<element name="responseMessage" type="string"></element>
+				<element name="token" type="string"></element>
 			</sequence>
 		</complexType>
 	</element>
