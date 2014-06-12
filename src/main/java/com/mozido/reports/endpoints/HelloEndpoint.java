@@ -21,16 +21,13 @@ public class HelloEndpoint {
 	@Autowired
 	Report report;
 
-	@PayloadRoot(localPart = "helloRequest", namespace = "http://localhost:8080/HelloWorldSpring/hello")
+	@PayloadRoot(localPart = "helloRequest", namespace = "http://localhost:8080/surround_reports/hello")
 	@ResponsePayload
 	public HelloResponse handleRequest(@RequestPayload HelloRequest request)
 			throws Exception {
 
-		System.out.println("Received message: " + request.getMessage());
-
 		HelloResponse response = new HelloResponse();
-		response.setResponseMessage("Hello, your message was: "
-				+ request.getMessage());
+		response.setResponseMessage("Hello, your message was: " + request.getMessage());
 		response.setToken(report.returnAToken());
 
 		return response;

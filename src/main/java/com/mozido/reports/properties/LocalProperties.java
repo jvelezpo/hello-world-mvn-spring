@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@PropertySources(value={@PropertySource("classpath:properties/default.properties")})
+@PropertySources(value = { 
+		@PropertySource("classpath:reports_properties/default.properties"),
+		@PropertySource(ignoreResourceNotFound = true, value = "classpath:reports_properties/devint2.properties")
+})
 public class LocalProperties {
 
 }

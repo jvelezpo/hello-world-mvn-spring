@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost:8181/surround_reports/eodPrint"
+	xmlns:tns="http://localhost:8181/surround_reports/eodPrint" elementFormDefault="qualified">
+	<element name="eodPrintRequest">
+		<complexType>
+			<sequence>
+				<element name="token" minOccurs="1" maxOccurs="1"
+					type="string" />
+				<element name="RestaurantID" minOccurs="1" maxOccurs="1"
+					type="string">
+				</element>
+				<element name="StartDate" minOccurs="1" maxOccurs="1"
+					type="string">
+				</element>
+				<element name="EndDate" minOccurs="1" maxOccurs="1"
+					type="string">
+				</element>
+				<element name="SortOrder" minOccurs="1" maxOccurs="1"
+					type="string">
+				</element>
+				<element name="username" type="string"></element>
+				<element name="password" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="eodPrintResponse">
+		<complexType>
+			<sequence>
+				<element name="responseMessage" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

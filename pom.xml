@@ -2,20 +2,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mozido.examples</groupId>
-	<artifactId>HelloWorldSpring</artifactId>
+	<groupId>com.mozido.reports</groupId>
+	<artifactId>surround_reports</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HelloWorldSpring Maven Webapp</name>
+	<name>Surround Reports Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<spring.version>4.0.5.RELEASE</spring.version>
 		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
+		<moteaf_host_and_port>http://api-devint2.mozido.com</moteaf_host_and_port>
+		<pentaho.kettle.version>5.0.1-stable</pentaho.kettle.version>
 	</properties>
 	
 	<build>
-		<finalName>HelloWorldSpring</finalName>
+		<finalName>surround_reports</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -30,7 +32,7 @@
 						</goals>
 						<configuration>
 							<schemaDirectory>src/main/resources/</schemaDirectory>
-							<schemaFiles>hello.xsd</schemaFiles>
+							<schemaFiles>*.xsd</schemaFiles>
 							<packageName>com.mozido.examples.generated.helloitems</packageName>
 							<staleFile>${project.build.directory}/jaxb2/.getProfileItemsXjcStaleFlag</staleFile>
 							<clearOutputDir>false</clearOutputDir>
@@ -38,16 +40,34 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+			    <groupId>org.apache.cxf</groupId>
+			    <artifactId>cxf-codegen-plugin</artifactId>
+			    <version>2.7.11</version>
+			    <executions>
+			        <execution>
+			            <id>generate-sources</id>
+			            <phase>generate-sources</phase>
+			            <configuration>
+			                <sourceRoot>${project.build.directory}/generated-sources/wsimport</sourceRoot>
+			                <defaultOptions>
+			                	  <bindingFiles>
+							          <bindingFile>${basedir}/src/main/resources/binding/bindings.xml</bindingFile>
+							      </bindingFiles>
+							      <noAddressBinding>true</noAddressBinding>
+							</defaultOptions>
+			                <wsdlOptions>
+			                    <wsdlOption><wsdl>${moteaf_host_and_port}/services/signon/signon.wsdl</wsdl></wsdlOption>
+			                </wsdlOptions>
+			            </configuration>
+			            <goals>
+			                <goal>wsdl2java</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>spring-maven-milestone</id>
-			<name>Springframework Maven Repository</name>
-			<url>http://maven.springframework.org/milestone</url>
-		</repository>
-	</repositories>
 	
 	<dependencies>
 		<dependency>
@@ -139,6 +159,85 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
+		</dependency>
+		
+		
+
+		<!-- Dependencies require for pentaho -->
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>pentaho-reporting-engine</groupId>
+			<artifactId>pentaho-reporting-engine-classic-core</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libbase</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libdocbundle</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libfonts</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libformat</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libformula</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libloader</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>librepository</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libserializer</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libxml</artifactId>
+			<version>${pentaho.kettle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-library</groupId>
+			<artifactId>libswing</artifactId>
+			<version>${pentaho.kettle.version}</version>
 		</dependency>
 	</dependencies>
 </project>

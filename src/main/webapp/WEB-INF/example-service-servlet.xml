@@ -15,9 +15,12 @@
 
 	<sws:annotation-driven/>
 
-	<sws:dynamic-wsdl id="hello" portTypeName="hello"
-		locationUri="http://localhost:8080/HelloWorldSpring/hello">
+	<sws:dynamic-wsdl id="hello" portTypeName="hello" locationUri="http://localhost:8080/surround_reports/hello">
 		<sws:xsd location="classpath:/hello.xsd" />
+	</sws:dynamic-wsdl>
+	
+	<sws:dynamic-wsdl id="eodPrint" portTypeName="eodPrint" locationUri="http://localhost:8181/surround_reports/eodPrint">
+		<sws:xsd location="classpath:/eodPrint.xsd" />
 	</sws:dynamic-wsdl>
 
 </beans>
