@@ -4,22 +4,10 @@
 	<element name="eodPrintRequest">
 		<complexType>
 			<sequence>
-				<element name="token" minOccurs="1" maxOccurs="1"
-					type="string" />
-				<element name="RestaurantID" minOccurs="1" maxOccurs="1"
-					type="string">
-				</element>
-				<element name="StartDate" minOccurs="1" maxOccurs="1"
-					type="string">
-				</element>
-				<element name="EndDate" minOccurs="1" maxOccurs="1"
-					type="string">
-				</element>
-				<element name="SortOrder" minOccurs="1" maxOccurs="1"
-					type="string">
-				</element>
-				<element name="username" type="string"></element>
-				<element name="password" type="string"></element>
+				<element name="token" minOccurs="1" maxOccurs="1" type="string" />
+				<element name="RestaurantID" minOccurs="1" maxOccurs="1" type="string"/>
+				<element name="StartDate" minOccurs="1" maxOccurs="1" type="string"/>
+				<element name="EndDate" minOccurs="1" maxOccurs="1" type="string"/>
 			</sequence>
 		</complexType>
 	</element>

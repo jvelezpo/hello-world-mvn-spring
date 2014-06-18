@@ -10,6 +10,11 @@ import com.mozido.examples.generated.helloitems.EodPrintRequest;
 import com.mozido.examples.generated.helloitems.EodPrintResponse;
 import com.mozido.reports.service.reports.EodReport;
 
+/**
+ * 
+ * @author sebastian
+ *
+ */
 @Endpoint
 public class EodPrintEndPoint {
 	
@@ -22,8 +27,12 @@ public class EodPrintEndPoint {
 			throws Exception {
 
 		EodPrintResponse response = new EodPrintResponse();
-		response.setResponseMessage("Hello, your message was: " + request.getToken());
-		response.setResponseMessage(eodReport.testing("gbolanos", "1234"));
+		response.setResponseMessage(
+				eodReport.doTheReport(
+						request.getToken(), 
+						request.getRestaurantID(),
+						request.getStartDate(), 
+						request.getEndDate()));
 
 		return response;
 	}

@@ -11,9 +11,15 @@ import com.mozido.api.core.signon.Signon;
 import com.mozido.api.core.signon.SignonRequest;
 import com.mozido.api.core.signon.SignonResponse;
 import com.mozido.api.core.signon.SignonService;
+import com.mozido.reports.exception.ServerException;
 import com.mozido.reports.util.PropertyGetter;
 import com.mozido.reports.util.network.NetworkServices;
 
+/**
+ * 
+ * @author sebastian
+ *
+ */
 @Service
 public class SignOnServicesImpl implements SignOnServices {
 
@@ -33,12 +39,12 @@ public class SignOnServicesImpl implements SignOnServices {
 		networkServices.initSoapService((BindingProvider)signon, "signon");
 	}
 	
-	public String signIn(String username, String password) {
+	public Boolean signIn(String username, String password) throws ServerException{
 		return doSignOn(username, password);
 	}
 	
-	public String doSignOn(String username, String password){
-		String result = "N/A"; 
+	public Boolean doSignOn(String username, String password) throws ServerException{
+		boolean result = false; 
 		
 		ContextRequest contextRequest = new ContextRequest();
 		contextRequest.setTenantName(propertyGetter.getProperty(PropertyGetter.TENANT_NAME_KEY));
@@ -57,14 +63,16 @@ public class SignOnServicesImpl implements SignOnServices {
 		pass.setValue(password);
 		signonRequest.setPass(pass);
 
-		SignonResponse signonResponse = signon.signon(signonRequest);
-		
 		try{
-			result = signonResponse.getContextResponse().getToken();
-			if(result == null)
-				throw new Exception();
+			SignonResponse response = signon.signon(signonRequest);
+			
+			if(!response.getContextResponse().getStatusCode().equals("SUCCESS")){
+				result = false;
+			}else{
+				result = true;
+			}
 		}catch(Exception e){
-			result = "Mozido Exception\n"+e.getMessage();
+			throw new ServerException("SignOn Exception");
 		}
 		return result;
 	}

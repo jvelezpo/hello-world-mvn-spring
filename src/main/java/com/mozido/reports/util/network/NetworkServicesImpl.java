@@ -18,12 +18,12 @@ public class NetworkServicesImpl implements NetworkServices{
 	PropertyGetter proConf;
 	
 	private String host;
-	private int timeout;
+//	private int timeout;
 	
 	@PostConstruct
 	public void initIt() throws Exception {
 		host = proConf.getProperty(PropertyGetter.MOTEAF_HOST_AND_PORT);
-		timeout = Integer.parseInt(proConf.getProperty(PropertyGetter.REQUEST_TIMEOUT_IN_MILLIS));
+//		timeout = Integer.parseInt(proConf.getProperty(PropertyGetter.REQUEST_TIMEOUT_IN_MILLIS));
 	}
 	
 	public void initSoapService(BindingProvider bindingProvider, String endPointAddress) {
