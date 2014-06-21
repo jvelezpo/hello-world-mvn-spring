@@ -6,7 +6,6 @@ import javax.xml.ws.BindingProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mozido.api.core.getcompany.GetCompanyService;
 import com.mozido.api.core.getperson.GetPerson;
 import com.mozido.api.core.getperson.GetPersonRequest;
 import com.mozido.api.core.getperson.GetPersonResponse;

@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.mozido.reports.generated.EodPrintRequest;
-import com.mozido.reports.generated.EodPrintResponse;
-import com.mozido.reports.service.reports.EodReport;
+import com.mozido.reports.generated.CustomerSummaryRequest;
+import com.mozido.reports.generated.CustomerSummaryResponse;
+import com.mozido.reports.service.reports.CustomerSummaryReport;
 
 /**
  * 
@@ -16,19 +16,19 @@ import com.mozido.reports.service.reports.EodReport;
  *
  */
 @Endpoint
-public class EodPrintEndPoint {
-	
+public class CustomerSummaryEndPoint {
+
 	@Autowired
-	EodReport eodReport;
+	CustomerSummaryReport customerSummaryReport;
 	
-	@PayloadRoot(localPart = "eodPrintRequest", namespace = "http://mozido.com/reportssurround/eodPrint")
+	@PayloadRoot(localPart = "customerSummaryRequest", namespace = "http://mozido.com/reportssurround/customerSummary")
 	@ResponsePayload
-	public EodPrintResponse handleRequest(@RequestPayload EodPrintRequest request)
+	public CustomerSummaryResponse handleRequest(@RequestPayload CustomerSummaryRequest request)
 			throws Exception {
 
-		EodPrintResponse response = new EodPrintResponse();
+		CustomerSummaryResponse response = new CustomerSummaryResponse();
 		response.setResponseMessage(
-				eodReport.doTheReport(
+				customerSummaryReport.doTheReport(
 						request.getToken(), 
 						request.getRestaurantID(),
 						request.getStartDate(), 

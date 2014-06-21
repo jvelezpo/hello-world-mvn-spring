@@ -6,7 +6,7 @@
 	<display-name>Archetype Created Web Application</display-name>
 
 	<servlet>
-		<servlet-name>example-service</servlet-name>
+		<servlet-name>reports-service</servlet-name>
 		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>transformWsdlLocations</param-name>
@@ -16,7 +16,7 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>example-service</servlet-name>
+		<servlet-name>reports-service</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 

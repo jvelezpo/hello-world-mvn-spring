@@ -6,7 +6,7 @@ import org.pentaho.reporting.engine.classic.core.ReportProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mozido.reports.report.EodPrint;
+import com.mozido.reports.report.RestaurantSummary;
 import com.mozido.reports.util.PropertyGetter;
 
 /**
@@ -15,16 +15,18 @@ import com.mozido.reports.util.PropertyGetter;
  *
  */
 @Service
-public class EodReportImpl extends Report implements EodReport{
+public class RestaurantSummaryReportImpl extends Report implements RestaurantSummaryReport{
 
 	@Autowired
 	PropertyGetter propertyGetter;
 	
 	@Autowired
-	EodPrint eodPrint;
+	RestaurantSummary restaurantSummary;
 	
-	public String doTheReport(String entityId, String fromDate, String toDate) throws IOException, ReportProcessingException{
-		String report = eodPrint.doTheReport(entityId, fromDate, toDate);
+	@Override
+	public String doTheReport(String entityId, String fromDate, String toDate) throws IOException, ReportProcessingException {
+		String report = restaurantSummary.doTheReport(entityId, fromDate, toDate);
 		return report;
 	}
+
 }

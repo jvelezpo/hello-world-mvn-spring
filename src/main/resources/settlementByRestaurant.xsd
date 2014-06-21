@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mozido.com/reportssurround/eodPrint"
-	xmlns:tns="http://mozido.com/reportssurround/eodPrint" elementFormDefault="qualified">
-	<element name="eodPrintRequest">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mozido.com/reportssurround/settlementByRestaurant"
+	xmlns:tns="http://mozido.com/reportssurround/settlementByRestaurant" elementFormDefault="qualified">
+	<element name="settlementByRestaurantRequest">
 		<complexType>
 			<sequence>
 				<element name="token" minOccurs="1" maxOccurs="1" type="string" />
@@ -12,7 +12,7 @@
 		</complexType>
 	</element>
 
-	<element name="eodPrintResponse">
+	<element name="settlementByRestaurantResponse">
 		<complexType>
 			<sequence>
 				<element name="responseMessage" type="string"></element>

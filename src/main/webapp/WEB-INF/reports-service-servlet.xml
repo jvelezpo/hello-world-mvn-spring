@@ -15,8 +15,24 @@
 
 	<sws:annotation-driven/>
 	
-	<sws:dynamic-wsdl id="eodPrint" portTypeName="eodPrint" locationUri="http://localhost:8181/surround_reports/eodPrint">
+	<sws:dynamic-wsdl id="eodPrint" portTypeName="eodPrint" locationUri="http://mozido.com/reportssurround/eodPrint">
 		<sws:xsd location="classpath:/eodPrint.xsd" />
+	</sws:dynamic-wsdl>
+	
+	<sws:dynamic-wsdl id="settlementByRestaurant" portTypeName="settlementByRestaurant" locationUri="http://mozido.com/reportssurround/settlementByRestaurant">
+		<sws:xsd location="classpath:/settlementByRestaurant.xsd" />
+	</sws:dynamic-wsdl>
+	
+	<sws:dynamic-wsdl id="clientStatement" portTypeName="clientStatement" locationUri="http://mozido.com/reportssurround/clientStatement">
+		<sws:xsd location="classpath:/clientStatement.xsd" />
+	</sws:dynamic-wsdl>
+	
+	<sws:dynamic-wsdl id="customerSummary" portTypeName="customerSummary" locationUri="http://mozido.com/reportssurround/customerSummary">
+		<sws:xsd location="classpath:/customerSummary.xsd" />
+	</sws:dynamic-wsdl>
+	
+	<sws:dynamic-wsdl id="restaurantSummary" portTypeName="restaurantSummary" locationUri="http://mozido.com/reportssurround/restaurantSummary">
+		<sws:xsd location="classpath:/restaurantSummary.xsd" />
 	</sws:dynamic-wsdl>
 
 </beans>

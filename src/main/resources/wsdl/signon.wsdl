@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://mozido.com/api/core/signon" xmlns:sch1="http://mozido.com/api/core/sharedContext" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://mozido.com/api/core/signon" targetNamespace="http://mozido.com/api/core/signon">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:sc="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/signon"><import namespace="http://mozido.com/api/core/sharedContext"/><element name="signonRequest"><complexType><sequence><element name="contextRequest" type="sc:contextRequest"/><element name="login"><complexType><simpleContent><extension base="string"><attribute name="credentialType" type="string"/></extension></simpleContent></complexType></element><element name="pass"><complexType><simpleContent><extension base="string"><attribute name="securityElementType" type="string"/></extension></simpleContent></complexType></element></sequence></complexType></element><element name="signonResponse"><complexType><sequence><element name="contextResponse" type="sc:contextResponse"/></sequence></complexType></element></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/sharedContext"><complexType name="contextRequest"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="utid" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType><complexType name="contextResponse"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="statusCode" type="string"/><element minOccurs="0" name="additionalStatusCode" type="string"/><element minOccurs="0" name="statusMessage" type="string"/><element minOccurs="0" name="additionalStatusMessage" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="signonResponse">
+    <wsdl:part element="tns:signonResponse" name="signonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signonRequest">
+    <wsdl:part element="tns:signonRequest" name="signonRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="signon">
+    <wsdl:operation name="signon">
+      <wsdl:input message="tns:signonRequest" name="signonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:signonResponse" name="signonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="signonSoap11" type="tns:signon">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="signon">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="signonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="signonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="signonService">
+    <wsdl:port binding="tns:signonSoap11" name="signonSoap11">
+      <soap:address location="http://localhost:8080/services/services/signon"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

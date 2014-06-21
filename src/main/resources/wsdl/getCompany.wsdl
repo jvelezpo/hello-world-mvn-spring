@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://mozido.com/api/core/getCompany" xmlns:sch1="http://mozido.com/api/core/sharedContext" xmlns:sch2="http://mozido.com/api/core/globalShared" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://mozido.com/api/core/getCompany" targetNamespace="http://mozido.com/api/core/getCompany">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gs="http://mozido.com/api/core/globalShared" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:sc="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/getCompany"><import namespace="http://mozido.com/api/core/sharedContext"/><import namespace="http://mozido.com/api/core/globalShared"/><element name="getCompanyRequest"><complexType><sequence><element name="contextRequest" type="sc:contextRequest"/><element minOccurs="0" name="companyId" type="int"/><element minOccurs="0" name="companyCode" type="string"/></sequence></complexType></element><element name="getCompanyResponse"><complexType><sequence><element name="contextResponse" type="sc:contextResponse"/><element minOccurs="0" name="parentId" type="int"/><element name="name" type="string"/><element name="companyCode" type="string"/><element minOccurs="0" name="country" type="string"/><element minOccurs="0" name="timezone" type="string"/><element minOccurs="0" name="timezoneOffset" type="string"/><element name="status" type="string"/><element name="companyId" type="int"/><element maxOccurs="unbounded" minOccurs="0" name="profile_items" type="gs:Attributes"/><element maxOccurs="unbounded" minOccurs="0" name="profile_items_secure" type="gs:Attributes"/></sequence></complexType></element></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/sharedContext"><complexType name="contextRequest"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="utid" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType><complexType name="contextResponse"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="statusCode" type="string"/><element minOccurs="0" name="additionalStatusCode" type="string"/><element minOccurs="0" name="statusMessage" type="string"/><element minOccurs="0" name="additionalStatusMessage" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/globalShared" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/globalShared"><complexType name="Attributes"><sequence><element name="key" type="string"/><element name="value" type="string"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="getCompanyResponse">
+    <wsdl:part element="tns:getCompanyResponse" name="getCompanyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCompanyRequest">
+    <wsdl:part element="tns:getCompanyRequest" name="getCompanyRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="getCompany">
+    <wsdl:operation name="getCompany">
+      <wsdl:input message="tns:getCompanyRequest" name="getCompanyRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCompanyResponse" name="getCompanyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="getCompanySoap11" type="tns:getCompany">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCompany">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCompanyRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCompanyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getCompanyService">
+    <wsdl:port binding="tns:getCompanySoap11" name="getCompanySoap11">
+      <soap:address location="http://localhost:8080/services/services/getCompany"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

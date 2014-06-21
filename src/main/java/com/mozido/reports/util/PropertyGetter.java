@@ -48,6 +48,13 @@ public class PropertyGetter {
 	public static final String ADMIN_ROLE_REFERENCE = "adminRoleReference";
 	public static final String ADMIN_PERSON_TYPE_KEY = "adminPersonType";
 	
+	/* report prpt file names */
+	public static final String EOD_REPORT = "eodReport";
+	public static final String CLIENT_STATEMENT = "clientStatement";
+	public static final String CUSTOMER_SUMMARY = "customerSummary";
+	public static final String RESTAURANT_SUMMARY = "restaurantSummary";
+	public static final String SETTLEMENT_BY_RESTAURANT = "settlementByRestaurant";
+	
 	@Autowired
 	private Environment env;
 	

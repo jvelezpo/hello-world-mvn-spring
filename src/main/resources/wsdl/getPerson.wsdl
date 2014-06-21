@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://mozido.com/api/core/getPerson" xmlns:sch1="http://mozido.com/api/core/sharedContext" xmlns:sch2="http://mozido.com/api/core/globalShared" xmlns:sch3="http://mozido.com/api/core/personShared" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://mozido.com/api/core/getPerson" targetNamespace="http://mozido.com/api/core/getPerson">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:ps="http://mozido.com/api/core/personShared" xmlns:sc="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/getPerson"><import namespace="http://mozido.com/api/core/sharedContext"/><import namespace="http://mozido.com/api/core/personShared"/><element name="getPersonRequest"><complexType><sequence><element name="contextRequest" type="sc:contextRequest"/><element minOccurs="0" name="personId" type="string"/><element minOccurs="0" name="credentialType" type="string"/><element minOccurs="0" name="credential" type="string"/></sequence></complexType></element><element name="getPersonResponse"><complexType><sequence><element name="contextResponse" type="sc:contextResponse"/><element name="person" type="ps:person"/></sequence></complexType></element></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/sharedContext"><complexType name="contextRequest"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="utid" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType><complexType name="contextResponse"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="statusCode" type="string"/><element minOccurs="0" name="additionalStatusCode" type="string"/><element minOccurs="0" name="statusMessage" type="string"/><element minOccurs="0" name="additionalStatusMessage" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/globalShared" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/globalShared"><complexType name="Attributes"><sequence><element name="key" type="string"/><element name="value" type="string"/></sequence></complexType></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gs="http://mozido.com/api/core/globalShared" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/personShared" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/personShared"><import namespace="http://mozido.com/api/core/globalShared"/><complexType name="PersonRoles"><sequence><element name="role" type="string"/></sequence></complexType><complexType name="person"><sequence><element name="id" type="string"/><element name="tenant_name" type="string"/><element minOccurs="0" name="entity_id" type="int"/><element name="person_type" type="string"/><element name="firstname" type="string"/><element minOccurs="0" name="middlename" type="string"/><element minOccurs="0" name="maternalname" type="string"/><element name="lastname" type="string"/><element minOccurs="0" name="birthdate" type="string"/><element minOccurs="0" name="nationality" type="string"/><element minOccurs="0" name="birthplace" type="string"/><element minOccurs="0" name="language" type="string"/><element minOccurs="0" name="language_country" type="string"/><element minOccurs="0" name="timezone" type="string"/><element minOccurs="0" name="timezone_offset" type="string"/><element minOccurs="0" name="status" type="string"/><element minOccurs="0" name="suspended_reason" type="string"/><element minOccurs="0" name="unsuspendedreason" type="string"/><element minOccurs="0" name="status_change_datetime" type="dateTime"/><element minOccurs="0" name="note" type="string"/><element minOccurs="0" name="registered_by" type="string"/><element minOccurs="0" name="password" type="string"/><element minOccurs="0" name="pin" type="string"/><element minOccurs="0" name="secret_word" type="string"/><element minOccurs="0" name="hash_algorithm" type="string"/><element minOccurs="0" name="force_pin_reset" type="string"/><element minOccurs="0" name="security_image_id" type="string"/><element minOccurs="0" name="security_image_phrase" type="string"/><element minOccurs="0" name="last_login_timestamp" type="dateTime"/><element minOccurs="0" name="last_logout_timestamp" type="dateTime"/><element minOccurs="0" name="aml_flag" type="string"/><element minOccurs="0" name="activation_datetime" type="dateTime"/><element maxOccurs="unbounded" minOccurs="0" name="profile_items" type="gs:Attributes"/><element maxOccurs="unbounded" minOccurs="0" name="profile_items_secure" type="gs:Attributes"/><element name="created_date" type="dateTime"/><element name="last_updated_date" type="dateTime"/><element minOccurs="0" name="government_id_type" type="string"/><element minOccurs="0" name="government_id_number" type="string"/><element minOccurs="0" name="address" type="string"/><element minOccurs="0" name="city" type="string"/><element minOccurs="0" name="state" type="string"/><element minOccurs="0" name="country" type="string"/><element minOccurs="0" name="zip" type="string"/><element minOccurs="0" name="phone_number" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="roles" type="tns:PersonRoles"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonResponse">
+    <wsdl:part element="tns:getPersonResponse" name="getPersonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonRequest">
+    <wsdl:part element="tns:getPersonRequest" name="getPersonRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="getPerson">
+    <wsdl:operation name="getPerson">
+      <wsdl:input message="tns:getPersonRequest" name="getPersonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getPersonResponse" name="getPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="getPersonSoap11" type="tns:getPerson">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getPersonService">
+    <wsdl:port binding="tns:getPersonSoap11" name="getPersonSoap11">
+      <soap:address location="http://localhost:8080/services/services/getPerson"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://mozido.com/api/core/getRoles" xmlns:sch1="http://mozido.com/api/core/sharedContext" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://mozido.com/api/core/getRoles" targetNamespace="http://mozido.com/api/core/getRoles">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:sc="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/getRoles"><import namespace="http://mozido.com/api/core/sharedContext"/><complexType name="Entitlement"><sequence><element name="name" type="string"/><element name="appliesToSelf" type="boolean"/><element name="appliesToSubscribers" type="boolean"/><element name="appliesToMyLevel" type="boolean"/><element name="appliesToBelowMyLevel" type="boolean"/></sequence></complexType><complexType name="Role"><sequence><element name="roleReference" type="string"/><element name="roleName" type="string"/><element name="roleDescription" type="string"/></sequence></complexType><element name="getRolesRequest"><complexType><sequence><element name="contextRequest" type="sc:contextRequest"/><element minOccurs="0" name="personId" type="int"/></sequence></complexType></element><element name="getRolesResponse"><complexType><sequence><element name="contextResponse" type="sc:contextResponse"/><element maxOccurs="unbounded" minOccurs="0" name="roles" type="tns:Role"/><element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="tns:Entitlement"/></sequence></complexType></element></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://mozido.com/api/core/sharedContext" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mozido.com/api/core/sharedContext"><complexType name="contextRequest"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="utid" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType><complexType name="contextResponse"><sequence><element minOccurs="0" name="token" type="string"/><element minOccurs="0" name="tenantName" type="string"/><element minOccurs="0" name="statusCode" type="string"/><element minOccurs="0" name="additionalStatusCode" type="string"/><element minOccurs="0" name="statusMessage" type="string"/><element minOccurs="0" name="additionalStatusMessage" type="string"/><element minOccurs="0" name="apiVersion" type="string"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="getRolesRequest">
+    <wsdl:part element="tns:getRolesRequest" name="getRolesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRolesResponse">
+    <wsdl:part element="tns:getRolesResponse" name="getRolesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="getRoles">
+    <wsdl:operation name="getRoles">
+      <wsdl:input message="tns:getRolesRequest" name="getRolesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getRolesResponse" name="getRolesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="getRolesSoap11" type="tns:getRoles">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getRoles">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getRolesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRolesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getRolesService">
+    <wsdl:port binding="tns:getRolesSoap11" name="getRolesSoap11">
+      <soap:address location="http://localhost:8080/services/services/getRoles"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

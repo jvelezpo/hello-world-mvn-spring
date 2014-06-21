@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @PropertySources(value = { 
-		@PropertySource("classpath:reports_properties/default.properties"),
-		@PropertySource(ignoreResourceNotFound = true, value = "classpath:reports_properties/devint2.properties")
+		@PropertySource("classpath:connector_properties/default.properties"),
+		@PropertySource(ignoreResourceNotFound = true, value = "classpath:connector_properties/${build.level}.properties"),
+		@PropertySource(ignoreResourceNotFound = true, value = "file:${catalina.base}/conf/ESDM-REP.properties")
 })
 public class LocalProperties {
 

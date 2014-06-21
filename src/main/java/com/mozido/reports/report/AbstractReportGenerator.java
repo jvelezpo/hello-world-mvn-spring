@@ -63,6 +63,13 @@ public abstract class AbstractReportGenerator{
   public static enum OutputType{
     PDF, EXCEL, HTML
   }
+  
+  /**
+   * Variables needed for the report
+   */
+  protected String restaurantID; 
+  protected String fromDate; 
+  protected String toDate;
 
   /**
    * Performs the basic initialization required to generate a report
@@ -81,12 +88,14 @@ public abstract class AbstractReportGenerator{
   public abstract MasterReport getReportDefinition();
 
   /**
-   * Returns the data factory used by this report generator. If this method returns <code>null</code>,
-   * the report generation process will use the data factory used in the report definition.
+   * Returns the data factory which will be used to generate the data used during report generation. In this example,
+   * we will return null since the data factory has been defined in the report definition.
    *
-   * @return the data factory used by this report generator
+   * @return the data factory used with the report generator
    */
-  public abstract DataFactory getDataFactory();
+  public DataFactory getDataFactory(){
+    return null;
+  }
 
   /**
    * Returns the set of parameters that will be passed to the report generation process. If there are no parameters
